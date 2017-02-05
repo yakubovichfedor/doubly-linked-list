@@ -25,7 +25,9 @@ class LinkedList {
     return this
   }
 
-    head() {}
+  head() {
+    return this._head ? this._head.data : null
+  }
 
     tail() {}
 
