@@ -125,7 +125,22 @@ class LinkedList {
     return this
   }
 
-    reverse() {}
+  reverse() {
+    let node = this._head
+
+    while(node != null) {
+      let temp = node.prev
+      node.prev = node.next
+      node.next = temp
+      node = node.prev
+    }
+
+    let temp = this._head
+    this._head = this._tail
+    this._tail = temp
+
+    return this
+  }
 
     indexOf(data) {}
 }
