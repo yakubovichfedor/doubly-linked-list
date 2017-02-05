@@ -89,8 +89,41 @@ class LinkedList {
     return this
   }
 
+  deleteAt(index) {
+    if (this.length < 1)
+      return
 
-    deleteAt(index) {}
+    if (index == 0) {
+      this._head = this._head.next
+
+      if (this._head) {
+        this._head.prev = null
+      }
+    }
+    else if (index == this.length - 1) {
+      this._tail = this._tail.prev
+      this._tail.next = null
+    }
+    else {
+      let node = this._head
+
+      for(let i = 0; i <= index; i++) {
+        if (i == index) {
+          let next = node.next
+          let prev = node.prev
+
+          prev.next = next
+          next.prev = prev
+        }
+
+        node = node.next
+      }
+    }
+
+    this.length--
+
+    return this
+  }
 
     reverse() {}
 
