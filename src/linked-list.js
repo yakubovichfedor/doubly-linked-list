@@ -45,7 +45,37 @@ class LinkedList {
     }
   }
 
-    insertAt(index, data) {}
+  insertAt(index, data) {
+    if (this.length == 0) {
+      this.append(data)
+      return this
+    }
+
+    let node = this._head
+
+    for(let i = 0; i <= Math.min(index, this.length); i++) {
+      if (i == index) {
+        let prev = node.prev
+        let newNode = new Node(data)
+
+        newNode.prev = node.prev
+        node.prev = newNode
+        newNode.next = node
+        if (prev) {
+          prev.next = newNode
+        }
+        if (index == 0) {
+          this._head = newNode
+        }
+      }
+
+      node = node.next
+    }
+
+    this.length++
+
+    return this
+  }
 
     isEmpty() {}
 
